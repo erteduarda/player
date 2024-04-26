@@ -1,23 +1,23 @@
-import MusicList from "../components/MusicList/MusicList"
+import MusicList from '../components/data-display/MusicList/MusicList';
+import AudioPlayer from '../components/data-display/AudioPlayer/AudioPlayer';
+import styles from './index.module.css';
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 
 export default function Index() {
-    const musics = [
-        {
-            id: 1,
-            name: 'Fortnight (feat. Post Malone)',
-            artist: 'Taylor Swift, Post Malone',
-            time: 120
-        },
-        {
-            id: 2,
-            name: 'Cry',
-            artist: 'Benson Boone',
-            time: 152
-        }
-    ]
+    const { selectedMusic, time, setTime, selectMusic, musicList } = useContext(AppContext);
     return (
-        <div>
-            <MusicList musics={musics} selectedMusic={musics[0]} onSelect={() =>{}} />
+        <div className={styles['page-container']}>
+            <MusicList
+                musics={musicList}
+                selectedMusic={selectedMusic}
+                onSelect={selectMusic}
+            />
+
+            <AudioPlayer
+                music={selectedMusic}
+                onComplete={() => console.log("ACABOU")}
+            />
         </div>
     )
 }

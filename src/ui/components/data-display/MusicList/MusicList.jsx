@@ -1,5 +1,5 @@
 import styles from './MusicList.module.css';
-import { TimeService } from '../../../data/services/TimeService';
+import { TimeService } from '../../../../data/services/TimeService.js';
 
 export default function MusicList(props) {
 
